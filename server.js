@@ -4,16 +4,6 @@ const promisify = require('util');
 const app = require('./app');
 
 
-// mongoose
-//    .connect(process.env.DATABASE_LOCAL,{
-//        useNewUrlParser: true
-//    })
-//     .then((conn) => {
-    
-//       console.log("connected");
-//     })
-//     .catch(() => console.log("not able to connect to the database"));
-
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 const database = process.env.DB_DATABASE;

@@ -5,13 +5,13 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xssClean = require('xss-clean');
-const postRouter = require('./Routes/postRoutes');
-const userRouter = require('./Routes/userRoutes');
-const commentRouter = require('./Routes/commentRoutes');
-const likeRouter = require('./Routes/likeRoutes');
-const AppError = require('./utils/appError');
-const errorController = require('./Controllers/errorController');
-const AuthController = require('./Controllers/AuthController');
+// const postRouter = require('./Routes/postRoutes');
+// const userRouter = require('./Routes/userRoutes');
+// const commentRouter = require('./Routes/commentRoutes');
+// const likeRouter = require('./Routes/likeRoutes');
+// const AppError = require('./utils/appError');
+// const errorController = require('./Controllers/errorController');
+// const AuthController = require('./Controllers/AuthController');
  
 
 dotenv.config({path: './.env'});
@@ -47,17 +47,17 @@ app.use((req,res,next) => {
 });
 
 
- app.use('/api/v1/posts',postRouter);
- app.use('/api/v1/users',userRouter);
- app.use('/api/v1/comments',commentRouter);
- app.use('/api/v1/likes',likeRouter);
+//  app.use('/api/v1/posts',postRouter);
+//  app.use('/api/v1/users',userRouter);
+//  app.use('/api/v1/comments',commentRouter);
+//  app.use('/api/v1/likes',likeRouter);
 
    
 app.all('*',(req,res,next) => {
-    next(new AppError(`Cant find ${req.originalUrl} on this server`,404)); 
+   //  next(new AppError(`Cant find ${req.originalUrl} on this server`,404)); 
 });
 
-app.use(errorController);
+// app.use(errorController);
 
 module.exports = app;
 
