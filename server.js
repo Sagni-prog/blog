@@ -7,7 +7,7 @@ const app = require('./app');
 // const User = reqiure('./Models/User');
 
 
-db.sequelize.sync().then(result => {
+db.sequelize.sync({ force: true }).then(result => {
     console.log(result);
 }).catch(err => {
    console.log(err);

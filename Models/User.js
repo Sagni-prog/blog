@@ -1,21 +1,26 @@
-const Sequelize = require('sequelize');
+const {Sequelize,DataTypes} = require('sequelize');
 const sequelize = require('./../database/database');
 
 const User = sequelize.define('user',{
      id: {
-         type: Sequelize.INTEGER,
+         type: DataTypes.INTEGER,
          autoIncrement:true,
          allowNull: false,
          primaryKey: true
          
      },
      name: {
-        type: Sequelize.SMALLINT,
+        type: DataTypes.STRING,
         allowNull: false
      },
     email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
+        unique: true
+     },
+     password: {
+        type: DataTypes.STRING,
+        allowNull: false
      }
 });
 

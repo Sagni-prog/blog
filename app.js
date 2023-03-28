@@ -13,6 +13,7 @@ const xssClean = require('xss-clean');
 // const errorController = require('./Controllers/errorController');
 // const AuthController = require('./Controllers/AuthController');
  
+ const User = require('./Models/User');
 
 dotenv.config({path: './.env'});
 
@@ -45,6 +46,18 @@ app.use((req,res,next) => {
    console.log("middleware");
    next();
 });
+
+app.post('/',async (req,res) => {
+   const user = await User.create({
+        name: "Poul",
+        email: "poul@gmail.com",
+        password: "123"
+   });
+   
+   res.json({
+      user
+   })
+})
 
 
 //  app.use('/api/v1/posts',postRouter);
