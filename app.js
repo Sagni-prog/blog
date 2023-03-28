@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xssClean = require('xss-clean');
+const UserController = require('./Controllers/UserController');
 // const postRouter = require('./Routes/postRoutes');
 // const userRouter = require('./Routes/userRoutes');
 // const commentRouter = require('./Routes/commentRoutes');
@@ -47,17 +48,7 @@ app.use((req,res,next) => {
    next();
 });
 
-app.post('/',async (req,res) => {
-   const user = await User.create({
-        name: "Poul",
-        email: "poul@gmail.com",
-        password: "123"
-   });
-   
-   res.json({
-      user
-   })
-})
+app.post('/api/user',UserController.create);
 
 
 //  app.use('/api/v1/posts',postRouter);
