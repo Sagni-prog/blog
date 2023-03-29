@@ -3,24 +3,25 @@ const UserFactory = require('./../Factories/UserFactory');
 const Response = require('./../Responses/Responses');
 
 
-const FieldFilter = (obj,...allowedFields) => {
 
-       const newObj = {};
-       Object.keys(obj).forEach(el => {
-          if(allowedFields.includes(el)) newObj[el] = obj[el];
-       });
-       
-       return newObj;
-       
-   }
    
-exports.create = async(req,res,next) => {
+   exports.create = UserFactory.addUser();
+   
+// exports.create = async(req,res,next) => {
 
-  const fields = FieldFilter(req.body,'name','email','password');
-      const user = await User.create(fields);
+// try {
+//    const fields = FieldFilter(req.body,'name','email','password');
+//    const user = await User.create(fields);
+    
+//     await Response.sucessResponse(res,201,user);
    
-   Response.sucessResponse(res,201,"sucess",user);
-}
+// } catch (error) {
+
+//   return res.json({
+//       error: error
+//   })
+//    }
+// }
 
 
 
