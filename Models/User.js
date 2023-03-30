@@ -20,9 +20,19 @@ const User = sequelize.define('user',{
      password: {
         type: DataTypes.STRING,
         allowNull: false
-     }
+     },
+     role: {
+        type: DataTypes.STRING,
+        deletedAt: 'user'
+     },
+     isActive: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+     },
+     passwordResetToken: DataTypes.STRING,
+     passwordResetTokenExpiresAt: DataTypes.DATE,
+     passworsChangedAt: DataTypes.DATE,
+     deletedAt: DataTypes.DATE
 });
 
 module.exports = User;
-
-// module.exports = User;
