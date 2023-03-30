@@ -1,5 +1,6 @@
 const {Sequelize,DataTypes} = require('sequelize');
 const sequelize = require('./../database/database');
+const Photo = require('./Photo');
 
 const User = sequelize.define('user',{
      id: {
@@ -35,4 +36,5 @@ const User = sequelize.define('user',{
      deletedAt: DataTypes.DATE
 });
 
+User.hasMany(Photo);
 module.exports = User;
