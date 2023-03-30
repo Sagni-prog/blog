@@ -1,27 +1,16 @@
 const User = require('./../Models/User');
 const UserFactory = require('./../Factories/UserFactory');
 const Response = require('./../Responses/Responses');
+const BodyFilter = require('./../Utils/BodyFilter');
 
 
-
-   
-   exports.create = UserFactory.addUser();
-   
-// exports.create = async(req,res,next) => {
-
-// try {
-//    const fields = FieldFilter(req.body,'name','email','password');
-//    const user = await User.create(fields);
-    
-//     await Response.sucessResponse(res,201,user);
-   
-// } catch (error) {
-
-//   return res.json({
-//       error: error
-//   })
-//    }
-// }
+  const filterUserInput = () => {
+     const fields = BodyFilter(req.body,'name','email','password');  
+     return fields;
+  } 
+   exports.create = UserFactory.add(User,filterUserInput());
+   exports.getUser = UserFactory.getUserById();
+   exports.index = UserFactory.getAllUser();
 
 
 

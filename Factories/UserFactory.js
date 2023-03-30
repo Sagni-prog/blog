@@ -10,4 +10,26 @@ exports.addUser = () =>
           Response.sucessResponse(res,201,user);
       }
       
-  
+exports.getUserById = () =>
+    async (req,res,next) => {
+       const id = req.params.id;
+       const user = await User.findById(id);
+       if(!user){
+       
+       }
+       Response.sucessResponse(res,200,user);
+    }
+    
+exports.getAllUser = () => 
+   async (req,res,next) => {
+      try {
+         const users = await User.findAll();
+         if(!users) {
+         
+         }
+         
+         Response.sucessResponse(res,200,users);
+      } catch (error) {
+        
+      }
+   }
