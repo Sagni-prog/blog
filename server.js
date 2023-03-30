@@ -5,7 +5,7 @@ const app = require('./app');
 
 
 
-db.sequelize.sync({ force: true }).then(result => {
+db.sequelize.sync().then(result => {
     console.log(result);
 }).catch(err => {
    console.log(err);

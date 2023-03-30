@@ -42,6 +42,8 @@ app.use((req,res,next) => {
 });
 
 app.post('/api/user',UserController.create);
+app.get('/api/users',UserController.index);
+app.get('/api/user/:id',UserController.getById);
 
 
 

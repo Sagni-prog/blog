@@ -10,15 +10,15 @@ exports.addUser = () =>
           Response.sucessResponse(res,201,user);
       }
       
-exports.getUserById = () =>
-    async (req,res,next) => {
-       const id = req.params.id;
-       const user = await User.findById(id);
-       if(!user){
+// exports.getUserById = () =>
+//     async (req,res,next) => {
+//        const id = req.params.id;
+//        const user = await User.findById(id);
+//        if(!user){
        
-       }
-       Response.sucessResponse(res,200,user);
-    }
+//        }
+//        Response.sucessResponse(res,200,user);
+//     }
     
 exports.getAllUser = () => 
    async (req,res,next) => {
@@ -33,3 +33,29 @@ exports.getAllUser = () =>
         
       }
    }
+   
+   
+  exports.getAll = (model) => 
+  async (req,res,next) => {
+     try {
+        const data = await model.findAll();
+        if(!data) {
+        
+        }
+        
+        Response.sucessResponse(res,200,data);
+     } catch (error) {
+       
+     }
+  }
+  
+  exports.getById = (model) =>
+    async (req,res,next) => {
+       const id = req.params.id;
+       const data = await model.findOne({ where: {id: id}});
+       if(!data){
+       
+       }
+       Response.sucessResponse(res,200,data);
+    }
+    
