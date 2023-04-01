@@ -8,6 +8,7 @@ const xssClean = require('xss-clean');
 const UserController = require('./Controllers/UserController');
 
  const User = require('./Models/User');
+ const Article = require('./Models/Article');
 
 dotenv.config({path: './.env'});
 
@@ -40,6 +41,16 @@ app.use((req,res,next) => {
    console.log("middleware");
    next();
 });
+
+app.get('/',(req,res) => {
+  const data = new Article().getFullname();
+  res.json({
+    data : {
+       data
+    }
+  })
+  
+})
 
 app.post('/api/user',UserController.create);
 app.get('/api/users',UserController.index);

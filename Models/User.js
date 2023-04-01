@@ -9,6 +9,10 @@ const User = sequelize.define('user',{
          allowNull: false,
          primaryKey: true
      },
+     uuid:{
+         type: DataTypes.UUID,
+         defaultValue: DataTypes.UUIDV4 // Or DataTypes.UUIDV1
+     },
      name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -36,5 +40,7 @@ const User = sequelize.define('user',{
      deletedAt: DataTypes.DATE
 });
 
-User.hasMany(Photo);
+
 module.exports = User;
+
+
